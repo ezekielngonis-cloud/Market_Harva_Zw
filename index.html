@@ -1,0 +1,297 @@
+
+<!doctype html>
+<html lang="en">
+ <head>   
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d20">
+  <meta name="description" content="Market HARVA — a smarter way to buy and sell across Zimbabwe.">
+  <title>Market HARVA | A smarter way to buy and sell</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  
+<section id="welcomeScreen" class="welcome-screen">
+  <div class="welcome-glow"></div>
+
+  <a class="brand welcome-brand" href="./">
+    MARKET<span> HARVA</span>
+  </a>
+
+  <div class="welcome-content">
+    <div class="eyebrow">YOUR MARKETPLACE. YOUR OPPORTUNITY.</div>
+
+    <h1>A smarter way to <span>buy and sell.</span></h1>
+
+    <p>
+      Discover opportunities, connect with sellers and manage
+      your marketplace experience in one place.
+    </p>
+
+    <div class="welcome-actions">
+      <button id="welcomeSignIn" class="btn" type="button">
+        Sign in <span aria-hidden="true">→</span>
+      </button>
+
+      <button id="welcomeSignUp" class="btn light" type="button">
+        Create account
+      </button>
+    </div>
+
+    <p class="welcome-note">
+      Secure account access · Built for Zimbabwe
+    </p>
+  </div>
+
+  <footer class="welcome-footer">
+    © <span id="welcomeYear"></span> Market HARVA
+  </footer>
+</section>
+
+<div id="appShell" class="app-shell" hidden>
+
+    <a class="brand" href="./" aria-label="Market HARVA home">
+      MARKET<span> HARVA</span>
+    </a>
+    <div class="row header-actions">
+      <span id="identity" class="pill">Guest</span>
+      <button id="authBtn" class="btn" type="button">Sign in</button>
+    </div>
+  </header>
+
+  <nav class="nav" aria-label="Main navigation">
+    <a href="#market">Marketplace</a>
+    <a href="#sell">Sell an item</a>
+    <a href="#orders">My orders</a>
+    <a href="#account">My account</a>
+    <a href="#support">Support</a>
+  </nav>
+
+  <main class="wrap">
+    <section id="market" class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">THE MARKETPLACE FOR EVERYDAY OPPORTUNITY</div>
+        <h1>A smarter way to <span>buy and sell.</span></h1>
+        <p>
+          Discover vehicles, property, electronics, fashion and more.
+          Connect with buyers and sellers across Zimbabwe.
+        </p>
+        <div class="hero-actions">
+          <a class="btn" href="#listings">Explore marketplace <span aria-hidden="true">→</span></a>
+          <a class="text-link" href="#sell">Start selling</a>
+        </div>
+        <div class="trust-line">
+          <span class="trust-dot"></span>
+          Local listings. Direct connections. More possibilities.
+        </div>
+      </div>
+
+      <div class="hero-feature">
+        <div class="feature-orbit orbit-one"></div>
+        <div class="feature-orbit orbit-two"></div>
+        <div class="feature-content">
+          <span class="feature-label">DISCOVER SOMETHING GREAT</span>
+          <div class="feature-symbol" aria-hidden="true">H</div>
+          <h2 id="count">— listings</h2>
+          <p>Find your next opportunity on Market HARVA.</p>
+          <a href="#listings" class="feature-link">Browse available items ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="listings" class="section">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">FIND YOUR NEXT GREAT DEAL</div>
+          <h2>Explore listings</h2>
+          <p class="muted">Search products and discover offers from around Zimbabwe.</p>
+        </div>
+        <span id="listStatus" class="status">Loading listings…</span>
+      </div>
+
+      <div class="filters">
+        <input id="search" type="search" placeholder="Search products or sellers" aria-label="Search products or sellers">
+        <select id="category" aria-label="Filter by category">
+          <option value="">All categories</option>
+          <option>Vehicles</option>
+          <option>Property</option>
+          <option>Electronics</option>
+          <option>Home & Kitchen</option>
+          <option>Fashion</option>
+          <option>Farming</option>
+          <option>Other</option>
+        </select>
+        <select id="sort" aria-label="Sort listings">
+          <option value="new">Newest first</option>
+          <option value="low">Price: low to high</option>
+          <option value="high">Price: high to low</option>
+        </select>
+      </div>
+
+      <div id="cards" class="cards">
+        <div class="empty">Loading marketplace listings…</div>
+      </div>
+    </section>
+
+    <section id="sell" class="panel">
+      <div class="eyebrow">YOUR SELLER WORKSPACE</div>
+      <h2>Bring your product to market.</h2>
+      <p class="muted">Create a listing and introduce your item to potential buyers.</p>
+
+      <form id="listingForm" class="formgrid">
+        <div class="wide">
+          <label for="title">Listing title *</label>
+          <input id="title" required maxlength="90" placeholder="What are you selling?">
+        </div>
+
+        <div>
+          <label for="newCategory">Category *</label>
+          <select id="newCategory">
+            <option>Electronics</option>
+            <option>Vehicles</option>
+            <option>Property</option>
+            <option>Home & Kitchen</option>
+            <option>Fashion</option>
+            <option>Farming</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="condition">Condition</label>
+          <select id="condition">
+            <option>New</option>
+            <option>Used</option>
+            <option>Refurbished</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="price">Price (USD) *</label>
+          <input id="price" type="number" min="0.01" step="0.01" required placeholder="0.00">
+        </div>
+
+        <div>
+          <label for="qty">Quantity *</label>
+          <input id="qty" type="number" min="1" step="1" value="1" required>
+        </div>
+
+        <div>
+          <label for="location">Location</label>
+          <input id="location" maxlength="100" placeholder="e.g. Mutare">
+        </div>
+
+        <div>
+          <label for="photo">Product photo</label>
+          <input id="photo" type="file" accept="image/jpeg,image/png,image/webp">
+        </div>
+
+        <div class="wide">
+          <label for="description">Description</label>
+          <textarea id="description" maxlength="1200" placeholder="Describe your item, its features and condition."></textarea>
+        </div>
+
+        <div class="wide form-submit">
+          <button class="btn" type="submit">Publish listing →</button>
+          <span id="listingMsg" class="status"></span>
+        </div>
+      </form>
+    </section>
+
+    <section id="orders" class="panel">
+      <div class="eyebrow">PURCHASES & SALES</div>
+      <h2>Your orders</h2>
+      <p class="muted">Manage your order requests in one place. Payments are not processed by this version of the marketplace.</p>
+      <div id="ordersContent" class="empty">Sign in to view your orders.</div>
+    </section>
+
+    <section id="account" class="panel">
+      <div class="eyebrow">YOUR HARVA WORKSPACE</div>
+      <h2>My account</h2>
+      <div id="accountContent" class="muted">Browsing as guest.</div>
+      <h3>My listings</h3>
+      <div id="myListings" class="muted">Sign in to manage your listings.</div>
+    </section>
+
+    <section id="support" class="panel">
+      <div class="eyebrow">MARKET HARVA SUPPORT</div>
+      <h2>How can we help?</h2>
+      <p class="muted">Send our support team a message and tell us how we can assist you.</p>
+
+      <form id="supportForm" class="formgrid">
+        <div>
+          <label for="supportName">Name *</label>
+          <input id="supportName" required maxlength="80" placeholder="Your name">
+        </div>
+
+        <div>
+          <label for="supportContact">Email or phone</label>
+          <input id="supportContact" maxlength="120" placeholder="How can we reach you?">
+        </div>
+
+        <div class="wide">
+          <label for="supportMessage">Message *</label>
+          <textarea id="supportMessage" required maxlength="1000" placeholder="Tell us what you need help with."></textarea>
+        </div>
+
+        <div class="wide form-submit">
+          <button class="btn" type="submit">Send message →</button>
+          <span id="supportMsg" class="status"></span>
+        </div>
+      </form>
+
+      <div class="support-contact">
+        <span class="support-icon" aria-hidden="true">↗</span>
+        <div>
+          <strong>Prefer WhatsApp?</strong>
+          <p class="muted">Contact the Market HARVA support team directly.</p>
+        </div>
+        <a class="text-link" href="https://wa.me/263780749788?text=Hello%20Market%20HARVA%20Support%2C%20I%20need%20help." target="_blank" rel="noopener noreferrer">Chat on WhatsApp ↗</a>
+      </div>
+    </section>
+
+    <footer>
+      <a class="brand footer-brand" href="./">MARKET<span> HARVA</span></a>
+      <p>© <span id="year"></span> Market HARVA. A smarter way to buy and sell.</p>
+      <p class="footer-note">Always verify sellers and goods before making payment.</p>
+    </footer>
+  </main>
+
+  <dialog id="authDialog" class="dialog">
+    <div class="row dialog-heading">
+      <div>
+        <div class="eyebrow">WELCOME TO MARKET HARVA</div>
+        <h2>Account access</h2>
+      </div>
+      <button id="closeAuth" class="btn light" type="button">Close</button>
+    </div>
+
+    <div class="row auth-tabs">
+      <button id="loginTab" class="btn" type="button">Sign in</button>
+      <button id="signupTab" class="btn light" type="button">Create account</button>
+    </div>
+
+    <form id="authForm">
+      <div id="nameWrap" class="hide">
+        <label for="authName">Full name / business name</label>
+        <input id="authName" maxlength="80" autocomplete="name">
+      </div>
+
+      <label for="authEmail">Email address</label>
+      <input id="authEmail" type="email" autocomplete="email" required>
+
+      <label for="authPassword">Password (at least 8 characters)</label>
+      <input id="authPassword" type="password" minlength="8" autocomplete="current-password" required>
+
+      <button id="authSubmit" class="btn auth-submit" type="submit">Sign in</button>
+      <p id="authMsg" class="status" role="status"></p>
+    </form>
+
+    <p class="auth-note">Keep your account details private. Market HARVA support will never ask for your password.</p>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</div>
+</body>
+</html>
