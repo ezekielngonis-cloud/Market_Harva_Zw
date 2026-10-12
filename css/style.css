@@ -611,6 +611,7 @@ footer p {
 }
 
 .toast {
+  display: none;
   position: fixed;
   right: 20px;
   bottom: 20px;
@@ -624,6 +625,10 @@ footer p {
   border-radius: 12px;
   box-shadow: var(--shadow);
   overflow-wrap: anywhere;
+}
+
+.toast.show {
+  display: block;
 }
 
 [hidden] {
